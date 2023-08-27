@@ -1,9 +1,7 @@
 package com.simplilearn.ecomorg.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,60 +10,39 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.simplilearn.ecomorg.model.Product;
+import com.simplilearn.ecomorg.entity.Product;
+import com.simplilearn.ecomorg.service.ProductService;
 
 // CRUD operation for product
 @RestController
 public class ProductController {
 
-	List<Product> products = new ArrayList<Product>();
+	@Autowired 
+	ProductService productService;
 	
 	@GetMapping("/products")
 	public List<Product> getProducts(){
-		return products;
+		return productService.getProducts();
 	}
 	
 	@GetMapping("/products/{productId}")
 	public Product getProduct(@PathVariable int productId){
-		
-		for (Product product : products) {
-			if(product.getProductId() == productId)
-				return product;
-		}
-		return null;
+		return productService.getProduct(productId);
 	}
 	
 	@PostMapping("/products")
-	public List<Product> addProduct(@RequestBody Product product){
-		products.add(product);
-		return products;
+	public Product addProduct(@RequestBody Product product){
+		return productService.addProduct(product);
 	}
 	
 	@PutMapping("/products")
-	public List<Product> updateProduct(@RequestBody Product product){
-		if (product != null) { 
-			for (int index = 0; index < products.size(); index++) { 
-				if (products.get(index).getProductId() == product.getProductId() ) {
-					// replace /update on products list object
-					products.set(index, product);
-					return products;
-				}
-			}
-		}
-		return null;
+	public Product updateProduct(@RequestBody Product product){
+		return productService.updateProduct(product);
 	}
 	
 	@DeleteMapping("/products/{productId}")
-	public List<Product> updateProduct(@PathVariable int productId){
-		if (productId>0) { 
-			for (int index = 0; index < products.size(); index++) { 
-				if (products.get(index).getProductId() == productId) {
-					// remove match  products list object
-					products.remove(index);
-					return products;
-				}
-			}
-		}
-		return null;
+	public String updateProduct(@PathVariable int productId){
+		productService.deleteProduct(productId);
+		return "PRoduct is deleted sucessfully with productId : "+productId;
 	}
 }

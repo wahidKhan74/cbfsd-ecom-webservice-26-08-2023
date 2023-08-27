@@ -35,13 +35,13 @@ public class HomeController {
 		return "Invalid Year of Birth";
 	}
 	
-	@RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/resource/{userId}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getUser(@PathVariable int userId) {
 		return "User exist with the given userId : "+userId;
 	}
 	
-	@RequestMapping(value = "/users/{userId}/reviews/{reviewId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/resource/{userId}/reviews/{reviewId}", method = RequestMethod.GET)
 	@ResponseBody
 	public String getUserReview(@PathVariable int userId, @PathVariable int reviewId) {
 		return "User exist with the given userId : "+userId +  " &  review alos exist with reviewId : "+reviewId;
