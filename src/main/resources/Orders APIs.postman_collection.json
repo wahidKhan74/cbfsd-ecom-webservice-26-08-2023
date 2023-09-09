@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "82d3b9e6-528f-4789-9ede-3c1610b9c75e",
+		"name": "Orders APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23316629",
+		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-82d3b9e6-528f-4789-9ede-3c1610b9c75e?action=share&source=collection_link&creator=23316629"
+	},
+	"item": [
+		{
+			"name": "Get all orders",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add orders",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"orderStatus\": \"New\",\r\n        \"email\": \"will.snow@simplilearn.com\",\r\n        \"address\": \"JK Street 42 AS\",\r\n        \"name\": \"Will Snow\",\r\n        \"paymentStatusTitle\": \"Completed\",\r\n        \"paymentMethodTitle\": \"Paypal\",\r\n        \"contact\": 9548556565,\r\n        \"totalItems\": 5,\r\n        \"itemsSubTotal\": 4677,\r\n        \"shipmentCharges\": 33,\r\n        \"totalAmount\": 4710,\r\n        \"paymentStatus\": 1,\r\n        \"paymentMethod\": 2,\r\n        \"userId\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one order by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/orders/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update order",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"orderId\": 1,\r\n        \"orderDate\": \"2023-09-09T17:50:31.293+00:00\",\r\n        \"orderStatus\": \"In Progress\",\r\n        \"totalItems\": 10,\r\n        \"itemsSubTotal\": 467,\r\n        \"shipmentCharges\": 33,\r\n        \"totalAmount\": 500,\r\n        \"paymentStatus\": 1,\r\n        \"paymentStatusTitle\": \"Completed\",\r\n        \"paymentMethod\": 2,\r\n        \"paymentMethodTitle\": \"Paypal\",\r\n        \"userId\": 2,\r\n        \"email\": \"mike.smith@simplilearn.com\",\r\n        \"address\": \"MAC Street 42 AS\",\r\n        \"name\": \"Mike Smith\",\r\n        \"contact\": 9548556565\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/orders/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"orders",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

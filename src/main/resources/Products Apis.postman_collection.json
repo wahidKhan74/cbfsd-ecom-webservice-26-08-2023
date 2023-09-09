@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "82d3b9e6-528f-4789-9ede-3c1610b9c75e",
-		"name": "Products Apis",
+		"_postman_id": "013620e8-e674-4a0c-8b00-55ebb78a4b2a",
+		"name": "Products APIs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "23316629",
-		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-82d3b9e6-528f-4789-9ede-3c1610b9c75e?action=share&source=collection_link&creator=23316629"
+		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-013620e8-e674-4a0c-8b00-55ebb78a4b2a?action=share&source=collection_link&creator=23316629"
 	},
 	"item": [
 		{
@@ -32,7 +32,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": " {\r\n        \"productTitle\": \"Leveno Inspiron 16 Laptop\",\r\n        \"productDescription\": \"It is a Dell company laptop\",\r\n        \"productCode\": \"DELL09312\",\r\n        \"images\": [\"dell-img.png\"],\r\n        \"thumbnailImage\": 0,\r\n        \"price\": 81990,\r\n        \"addedOn\": null,\r\n        \"rating\": 5\r\n}",
+					"raw": " {\r\n        \"productTitle\": \"MAC Inspiron 16 Laptop\",\r\n        \"productDescription\": \"It is a apple company laptop\",\r\n        \"productCode\": \"APP09312\",\r\n        \"images\": [\"apple-img.png\"],\r\n        \"thumbnailImage\": 0,\r\n        \"price\": 81990,\r\n        \"addedOn\": null,\r\n        \"rating\": 5\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

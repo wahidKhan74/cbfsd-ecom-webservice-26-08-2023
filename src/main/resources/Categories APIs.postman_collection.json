@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "d81381a2-fad7-4416-b2ae-f7056893bdd9",
+		"name": "Categories APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23316629",
+		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-d81381a2-fad7-4416-b2ae-f7056893bdd9?action=share&source=collection_link&creator=23316629"
+	},
+	"item": [
+		{
+			"name": "Get All categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryDescription\": \"Electronics & Home Applience for home decore\",\r\n    \"categoryImageUrl\": \"http://ecom.org/electronics\",\r\n    \"active\": 1,\r\n    \"addedOn\": \"2023-09-09T17:41:41.981+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update category",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoryId\": 5,\r\n    \"categoryName\": \"Sports, Gym and Fitness\",\r\n    \"categoryDescription\": \"Sports, Gym and Fitness for healthy lifestyle\",\r\n    \"categoryImageUrl\": \"http://ecom.org/sport_gym_health\",\r\n    \"active\": 1,\r\n    \"addedOn\": \"2023-09-09T17:41:41.981+00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/categories",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get category by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/categories/20",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"categories",
+						"20"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete category by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/categories/4",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"categories",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
