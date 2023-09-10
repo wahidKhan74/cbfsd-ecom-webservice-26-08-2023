@@ -1,12 +1,16 @@
 package com.simplilearn.ecomorg.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.simplilearn.ecomorg.dto.LoginRequestDto;
 import com.simplilearn.ecomorg.entity.Admin;
 import com.simplilearn.ecomorg.exception.BadRequestException;
 import com.simplilearn.ecomorg.exception.NotFoundException;
@@ -22,8 +26,11 @@ public class AdminService {
 	BCryptPasswordEncoder passwordEncoder ;
 	
 	// Get all Admins
-	public List<Admin> getAdmins() {
-		return adminRepository.findAll();
+	public Page<Admin> getAdmins(int page, int size, String sort, String sortOrder) {
+		Sort.Direction direction = sortOrder.equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC;
+		Sort sortBy = Sort.by(direction,sort);
+		Pageable pageable = PageRequest.of(page, size, sortBy);
+		return adminRepository.findAll(pageable);
 	}
 	
 	// Get one Admin by AdminId
@@ -64,5 +71,20 @@ public class AdminService {
 			adminRepository.deleteById(adminId);
 		else 
 			throw new NotFoundException("The admin user does not exist with provided adminId.");
+	}
+
+	public Admin validateLogin(LoginRequestDto loginDto) {
+		boolean exist = adminRepository.existsByEmail(loginDto.getEmail()) ;
+		if(exist) {
+			Admin admin = adminRepository.findByEmail(loginDto.getEmail());
+			passwordEncoder = new BCryptPasswordEncoder();
+			if(passwordEncoder.matches(loginDto.getPassword(), admin.getPassword())) {
+				return admin;
+			} else {
+				throw new NotFoundException("Invalid password, Password mismatch error.");
+			}
+		} else {
+			throw new NotFoundException("Admin user does not exist.");
+		}
 	}
 }

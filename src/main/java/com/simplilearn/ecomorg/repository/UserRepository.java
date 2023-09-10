@@ -8,4 +8,8 @@ import com.simplilearn.ecomorg.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
 
+	boolean existsByEmail(String email);
+
+	User findByEmail(String email);
+
 }

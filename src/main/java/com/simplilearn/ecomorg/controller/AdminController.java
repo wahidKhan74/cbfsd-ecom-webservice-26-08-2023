@@ -1,10 +1,11 @@
 package com.simplilearn.ecomorg.controller;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simplilearn.ecomorg.dto.ResponseDto;
 import com.simplilearn.ecomorg.entity.Admin;
-import com.simplilearn.ecomorg.exception.NotFoundException;
 import com.simplilearn.ecomorg.service.AdminService;
-import com.simplilearn.ecomorg.util.StringUtil;
 
 // CRUD operation for admin
 @RestController
@@ -29,8 +29,9 @@ public class AdminController {
 	
 	
 	@GetMapping("/admins")
-	public List<Admin> getAdmins(){
-		return adminService.getAdmins();
+	public Page<Admin> getAdmins(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, 
+			@RequestParam(defaultValue = "adminId") String sort, @RequestParam(defaultValue = "ASC") String sortOrder){
+		return adminService.getAdmins(page,size, sort, sortOrder);
 	}
 	
 	@GetMapping("/admins/{adminId}")
