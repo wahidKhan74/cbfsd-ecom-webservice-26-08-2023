@@ -1,0 +1,121 @@
+{
+	"info": {
+		"_postman_id": "61a68e74-de01-46a3-a80e-bc57a313d875",
+		"name": "Shipment APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23316629",
+		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-61a68e74-de01-46a3-a80e-bc57a313d875?action=share&source=collection_link&creator=23316629"
+	},
+	"item": [
+		{
+			"name": "Get all shipments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/shipments",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add shipments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"orderId\": 2,\r\n        \"shipmentTitle\": \"Food Items\",\r\n        \"expectedDeliveryDate\": \"2023-09-12T17:50:31.293+00:00\",\r\n        \"shipmentDate\": \"2023-09-10T17:50:31.293+00:00\",\r\n        \"shipmentMethod\": \"Truck\",\r\n        \"shipmentCompany\": \"MFood\",\r\n        \"shipmentStatus\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/shipments",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get one shipment by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/shipments/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"shipments",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update shipments",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"shipmentId\": 2,\r\n        \"orderId\": 2,\r\n        \"shipmentStatus\": 5,\r\n        \"shipmentTitle\": \"Food Items\",\r\n        \"shipmentDate\": \"2023-09-10T17:50:31.293+00:00\",\r\n        \"expectedDeliveryDate\": \"2023-09-12T17:50:31.293+00:00\",\r\n        \"shipmentMethod\": \"Truck\",\r\n        \"shipmentCompany\": \"MFood\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/shipments",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"shipments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete shipments",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/shipments/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"shipments",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

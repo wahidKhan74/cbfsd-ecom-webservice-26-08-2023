@@ -1,7 +1,5 @@
 package com.simplilearn.ecomorg.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,5 +36,5 @@ public class Cart {
 	private int quantity;
 	
 	@Transient
-	private Product products;
+	private Product product;
 }

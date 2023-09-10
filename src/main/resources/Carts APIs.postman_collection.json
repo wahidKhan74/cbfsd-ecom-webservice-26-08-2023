@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "ace3d4d7-fec1-4644-afb5-1351e153b414",
+		"name": "Carts APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23316629",
+		"_collection_link": "https://lunar-escape-325502.postman.co/workspace/CBFSD~bcfa7f93-d49c-48e8-9b35-ec64e7bb7697/collection/23316629-ace3d4d7-fec1-4644-afb5-1351e153b414?action=share&source=collection_link&creator=23316629"
+	},
+	"item": [
+		{
+			"name": "Get all carts items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/carts?userId=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add items into cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"productId\": 2,\r\n        \"userId\": 1,\r\n        \"quantity\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/carts",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cart deatils by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/carts/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"carts",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update carts details",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n        \"cartId\": 1,\r\n        \"productId\": 2,\r\n        \"userId\": 2,\r\n        \"quantity\": 2,\r\n        \"products\": null\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8088/carts",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete carts details",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8088/carts/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8088",
+					"path": [
+						"carts",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,12 +1,16 @@
 package com.simplilearn.ecomorg.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.simplilearn.ecomorg.entity.WhishList;
+import com.simplilearn.ecomorg.exception.BadRequestException;
+import com.simplilearn.ecomorg.exception.NotFoundException;
 import com.simplilearn.ecomorg.repository.WhishListRepository;
+import com.simplilearn.ecomorg.util.StringUtil;
 
 @Service
 public class WhishListService {
@@ -20,8 +24,12 @@ public class WhishListService {
 	}
 	
 	// Get one whishlist by whishlistId
-	public WhishList getWhishList(int whishlistId) {
-		return whishListRepository.findById(whishlistId).get();
+	public Optional<WhishList> getWhishList(int whishlistId) {
+		Optional<WhishList> whishlist =  whishListRepository.findById(whishlistId);
+		if(whishlist.isPresent() && StringUtil.isNotNull(whishlist))
+			return whishlist;
+		else 
+			throw new NotFoundException("The whishlist details does not exist with provided whishlistId.");
 	}
 	
 	// Add whishlist
@@ -31,14 +39,21 @@ public class WhishListService {
 	
 	// Update whishlist
 	public WhishList updateWhishList(WhishList whishlist) {
+		if(whishlist.getWishlistId() <=0 )
+			throw new BadRequestException("whishlistId id cannot be null or empty.");
 		if(whishListRepository.existsById(whishlist.getWishlistId()))
 			return whishListRepository.save(whishlist);
 		else 
-			return null;
+			throw new NotFoundException("The whishlist details does not exist with provided whishlistId.");
 	}
 	
 	// Delete whishlist
 	public void deleteWhishList(int whishlistId) {
-		whishListRepository.deleteById(whishlistId);
+		if(whishlistId <=0 )
+			throw new BadRequestException("whishlistId id cannot be null or empty.");
+		if(whishListRepository.existsById(whishlistId))
+			whishListRepository.deleteById(whishlistId);
+		else 
+			throw new NotFoundException("The whishlist details does not exist with provided whishlistId.");
 	}
 }
