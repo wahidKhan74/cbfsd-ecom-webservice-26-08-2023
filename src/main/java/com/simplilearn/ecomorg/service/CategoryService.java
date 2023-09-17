@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.simplilearn.ecomorg.entity.Category;
@@ -18,8 +22,11 @@ public class CategoryService {
 	CategoryRepository categoryRepository;
 	
 	// Get all categorys
-	public List<Category> getCategories() {
-		return categoryRepository.findAll();
+	public Page<Category> getCategories(int page, int size, String sort, String sortOrder) {
+		Sort.Direction direction = sortOrder.equalsIgnoreCase("ASC") ? Sort.Direction.ASC : Sort.Direction.DESC;
+		Sort sortBy = Sort.by(direction,sort);
+		Pageable pageable = PageRequest.of(page, size, sortBy);
+		return categoryRepository.findAll(pageable);
 	}
 	
 	// Get one category by categoryId

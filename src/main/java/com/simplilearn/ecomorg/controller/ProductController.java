@@ -1,8 +1,10 @@
 package com.simplilearn.ecomorg.controller;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.simplilearn.ecomorg.dto.ResponseDto;
 import com.simplilearn.ecomorg.entity.Product;
 import com.simplilearn.ecomorg.service.ProductService;
 
@@ -44,8 +47,8 @@ public class ProductController {
 	}
 	
 	@DeleteMapping("/products/{productId}")
-	public String updateProduct(@PathVariable int productId){
+	public ResponseDto updateProduct(@PathVariable int productId){
 		productService.deleteProduct(productId);
-		return "PRoduct is deleted sucessfully with productId : "+productId;
+		return new ResponseDto("PRoduct is deleted sucessfully with productId : "+productId, new Date(),HttpStatus.OK.name(),null);
 	}
 }

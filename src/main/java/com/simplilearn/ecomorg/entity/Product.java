@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -57,4 +58,8 @@ public class Product {
 	
 	@Column(name="rating")
 	private int rating;
+	
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+	private Category productCategory;
 }
