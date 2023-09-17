@@ -1,15 +1,20 @@
 package com.simplilearn.ecomorg.controller;
 
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.simplilearn.ecomorg.dto.ResponseDto;
 import com.simplilearn.ecomorg.entity.User;
 import com.simplilearn.ecomorg.service.UserService;
 
@@ -20,29 +25,54 @@ public class UserController {
 	@Autowired 
 	UserService userService;
 	
+	/**
+	 * Get all users
+	 * @return
+	 */
 	@GetMapping("/users")
-	public List<User> getUsers(){
-		return userService.getUsers();
+	public Page<User> getUsers(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size, 
+			@RequestParam(defaultValue = "userId") String sort, @RequestParam(defaultValue = "ASC") String sortOrder){
+		return userService.getUsers(page,size, sort, sortOrder);
 	}
 	
+	/**
+	 * Get one user
+	 * @param userId
+	 * @return
+	 */
 	@GetMapping("/users/{userId}")
 	public User getUser(@PathVariable int userId){
 		return userService.getUser(userId);
 	}
 	
+	/**
+	 * Add user
+	 * @param user
+	 * @return
+	 */
 	@PostMapping("/users")
 	public User addUser(@RequestBody User user){
 		return userService.addUser(user);
 	}
 	
+	/**
+	 * Update user
+	 * @param user
+	 * @return
+	 */
 	@PutMapping("/users")
 	public User updateUser(@RequestBody User user){
 		return userService.updateUser(user);
 	}
 	
+	/**
+	 * Delete user
+	 * @param userId
+	 * @return
+	 */
 	@DeleteMapping("/users/{userId}")
-	public String updateUser(@PathVariable int userId){
+	public ResponseDto updateUser(@PathVariable int userId){
 		userService.deleteUser(userId);
-		return "User is deleted sucessfully with userId : "+userId;
+		return new ResponseDto("User is deleted sucessfully with userId : "+userId, new Date(),HttpStatus.OK.name(),null);
 	}
 }
