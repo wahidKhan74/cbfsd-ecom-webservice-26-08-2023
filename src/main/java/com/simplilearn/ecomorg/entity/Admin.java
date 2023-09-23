@@ -1,6 +1,7 @@
 package com.simplilearn.ecomorg.entity;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,6 +36,9 @@ public class Admin {
 	
 	@Column(name="full_name")
 	private String fullName;
+	
+	@Column(name="auth_token")
+	private String authToken = UUID.randomUUID().toString();
 	
 	@Column(name="login_type")
 	private int loginType;

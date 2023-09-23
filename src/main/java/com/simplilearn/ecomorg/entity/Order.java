@@ -1,12 +1,19 @@
 package com.simplilearn.ecomorg.entity;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,7 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "orders")
-@SequenceGenerator(name="order_seq", sequenceName = "order_seq", initialValue =1, allocationSize = 1 )
+@SequenceGenerator(name = "order_seq", sequenceName = "order_seq", initialValue = 1, allocationSize = 1)
 public class Order {
 
 	// order details properties
@@ -80,4 +87,8 @@ public class Order {
 
 	@Column(name = "contact")
 	private Long contact;
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "order_order_items", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "order_item_id"))
+	private List<OrderItem> orderItems;
 }

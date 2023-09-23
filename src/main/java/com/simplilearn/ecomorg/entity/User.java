@@ -1,6 +1,7 @@
 package com.simplilearn.ecomorg.entity;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,6 +39,9 @@ public class User {
 	
 	@Column(name="login_type_identifier")
 	private int loginType;
+	
+	@Column(name="auth_token")
+	private String authToken = UUID.randomUUID().toString();
 	
 	@Column(name="added_on")
 	private Date addedOn = new Date();

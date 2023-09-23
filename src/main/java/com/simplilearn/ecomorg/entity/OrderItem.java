@@ -31,10 +31,7 @@ public class OrderItem {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_item_seq")
 	@Column(name="order_item_id")
 	private int orderItemId;
-	
-	@Column(name="order_id")
-	private int orderId;
-	
+		
 	@Column(name="product_id")
 	private int productId;
 	
