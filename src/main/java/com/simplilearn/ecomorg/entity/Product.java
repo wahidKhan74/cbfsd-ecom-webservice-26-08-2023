@@ -47,6 +47,9 @@ public class Product {
 	@Column(name="image_url")
 	private List<String> imageUrls = new ArrayList<>();
 	
+	@Column(name="image_url")
+	private String imgUrl;
+	
 	@Column(name="thumbnail_image")
 	private int thumbnailImage;
 	

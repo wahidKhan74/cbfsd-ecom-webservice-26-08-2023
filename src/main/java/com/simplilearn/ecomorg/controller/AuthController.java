@@ -47,7 +47,7 @@ public class AuthController {
 		authResponseDto.setId(user.getUserId());
 		authResponseDto.setAuthToken(user.getAuthToken());
 		authResponseDto.setFullName(user.getFullName());
-		return new ResponseDto("User loggedIn sucessfully.", new Date(),HttpStatus.OK.name(),user);
+		return new ResponseDto("User loggedIn sucessfully.", new Date(),HttpStatus.OK.name(),authResponseDto);
 	}
 	
 }
