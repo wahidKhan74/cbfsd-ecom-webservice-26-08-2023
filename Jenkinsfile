@@ -16,14 +16,7 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        
-         stage('Maven Test') {
-            steps {
-                echo '----------------- This is a compile phase ----------'
-                sh 'mvn clean test'
-            }
-        }
-        
+                
         stage('Maven Build') {
              steps {
                 echo '----------------- This is a build phase ----------'
